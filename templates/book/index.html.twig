@@ -1,0 +1,27 @@
+<h1>List of Books</h1>
+<table border = "1">
+    <thead >
+        <tr>
+            <th>Title</th>
+            <th>Publication Date</th>
+            <th>Published</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+            <tr>
+            <td>{{book.title}}</td>
+            <td>{{book.publicationDate|date('Y-m-d')}}</td>
+            <td>{{book.enabled}}</td>
+
+            <td>{{book.author ? book.author.username : 'No Author'}}</td>
+            <td><a href="{{path("update",{'id':book.id})}}">edit</a>
+                <a href="{{path("delete",{'id':book.id})}}">delete</a>
+                <a href="">show</a>
+            </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
